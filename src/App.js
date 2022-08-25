@@ -7,7 +7,13 @@ function App() {
 const [account, setAccount] =useState("");
 const [provider, setProvider] = useState(null);
 
-useRandomUser();
+ const {state}= useRandomUser();
+
+ const renderEmail= useMemo (()=>{
+  if(!state) return null;
+
+  return state.email;
+ },[state])
 
   function connect() {
     if(!window.ethereum) {alert ("Metamask is not installed");return;}
@@ -36,7 +42,7 @@ useRandomUser();
     }}> {account ? "Connected" : "Connect"} </button>
 
     <div> account: {account}</div>
-
+    <h1>{renderEmail}</h1>
     </div>
   );
 }
