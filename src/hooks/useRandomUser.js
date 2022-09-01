@@ -8,7 +8,7 @@ export const useRandomUser = ()=> {
         const fn = async () => {
             const result= await fetch('https://randomuser.me/api/');
             const json=await result.json();
-            console.log(json);
+            //console.log(json);
             setState(json.results[0]);
         };
         fn();
